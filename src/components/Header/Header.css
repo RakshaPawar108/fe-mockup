@@ -1,0 +1,8 @@
+.logo-image {
+  color: var(--primary-color);
+  fill: currentColor;
+}
+
+.header-text {
+  color: var(--primary-text-color);
+}
