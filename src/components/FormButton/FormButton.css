@@ -1,0 +1,7 @@
+.form-btn {
+  background: var(--primary-color);
+  padding: 1.5rem;
+  color: white;
+  margin: 1.5rem;
+  width: 75%;
+}
