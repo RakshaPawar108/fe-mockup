@@ -7,10 +7,13 @@ import { checkMarkImg, userOne, usersMany } from "../../assets";
 
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [displayName, setDisplayName] = useState("");
   const clickHandler = () => {
     if (currentStep + 1 === FormData.length) return;
     setCurrentStep((prev) => prev + 1);
   };
+
+  const dataFromInput = (data) => setDisplayName(data);
   return (
     <Container width="40rem" marginTop="1rem">
       {currentStep + 1 === FormData.length && (
@@ -26,7 +29,9 @@ export const Form = () => {
         className="heading-container"
       >
         <Heading as="h2" whiteSpace="nowrap">
-          {FormData[currentStep].heading}
+          {currentStep + 1 === FormData.length
+            ? `${FormData[currentStep].heading} ${displayName}!`
+            : `${FormData[currentStep].heading}`}
         </Heading>
         <Text fontSize="1rem" fontWeight="500" className="sub-heading">
           {FormData[currentStep].subHeading}
@@ -58,7 +63,7 @@ export const Form = () => {
           marginTop="1.5rem"
           className="form-container"
         >
-          <FormInput currentStep={currentStep} />
+          <FormInput currentStep={currentStep} dataFromInput={dataFromInput} />
         </Flex>
       )}
 
