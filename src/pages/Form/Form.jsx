@@ -3,7 +3,7 @@ import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { FormButton, FormCard, FormInput } from "../../components";
 import { useState } from "react";
 import { FormData } from "./Form.data";
-import { userOne, usersMany } from "../../assets";
+import { checkMarkImg, userOne, usersMany } from "../../assets";
 
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -13,6 +13,11 @@ export const Form = () => {
   };
   return (
     <Container width="40rem" marginTop="1rem">
+      {currentStep + 1 === FormData.length && (
+        <Flex direction="column" align="center" justify="center">
+          <img src={checkMarkImg} alt="check-mark" />
+        </Flex>
+      )}
       <Flex
         direction="column"
         align="center"
@@ -57,7 +62,14 @@ export const Form = () => {
         </Flex>
       )}
 
-      <FormButton incrementStep={clickHandler} />
+      <FormButton
+        btnText={
+          currentStep + 1 === FormData.length
+            ? "Launch Eden"
+            : "Create Workspace"
+        }
+        incrementStep={clickHandler}
+      />
     </Container>
   );
 };

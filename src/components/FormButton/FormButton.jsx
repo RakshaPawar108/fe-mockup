@@ -1,7 +1,7 @@
 import "./FormButton.css";
 import { Button } from "@chakra-ui/react";
 
-export const FormButton = ({ incrementStep }) => {
+export const FormButton = ({ incrementStep, btnText }) => {
   const buttonBgColor = "#664de4";
   return (
     <Button
@@ -10,7 +10,7 @@ export const FormButton = ({ incrementStep }) => {
       backgroundColor={buttonBgColor}
       onClick={incrementStep}
     >
-      Create Workspace
+      {btnText}
     </Button>
   );
 };
