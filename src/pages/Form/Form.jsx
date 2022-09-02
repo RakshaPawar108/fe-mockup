@@ -1,10 +1,17 @@
 import "./Form.css";
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { FormButton, FormInput } from "../../components";
+import { useState } from "react";
+import { FormData } from "./Form.data";
 
 export const Form = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const clickHandler = () => {
+    if (currentStep + 1 === FormData.length) return;
+    setCurrentStep((prev) => prev + 1);
+  };
   return (
-    <Container width="50rem" marginTop="1rem">
+    <Container width="100%" marginTop="1rem">
       <Flex
         direction="column"
         align="center"
@@ -12,9 +19,11 @@ export const Form = () => {
         gap="1.5rem"
         className="heading-container"
       >
-        <Heading as="h2">I am the main heading</Heading>
+        <Heading as="h2" whiteSpace="nowrap">
+          {FormData[currentStep].heading}
+        </Heading>
         <Text fontSize="1rem" fontWeight="500" className="sub-heading">
-          I am the sub heading
+          {FormData[currentStep].subHeading}
         </Text>
       </Flex>
 
@@ -24,9 +33,9 @@ export const Form = () => {
         marginTop="1.5rem"
         className="form-container"
       >
-        <FormInput />
+        <FormInput currentStep={currentStep} />
       </Flex>
-      <FormButton />
+      <FormButton incrementStep={clickHandler} />
     </Container>
   );
 };
