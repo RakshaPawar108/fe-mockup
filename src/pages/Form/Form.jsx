@@ -1,6 +1,11 @@
 import "./Form.css";
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
-import { FormButton, FormCard, FormInput } from "../../components";
+import {
+  FormButton,
+  FormCard,
+  FormInput,
+  FormProgressBar,
+} from "../../components";
 import { useState } from "react";
 import { FormData } from "./Form.data";
 import { checkMarkImg, userOne, usersMany } from "../../assets";
@@ -8,9 +13,11 @@ import { checkMarkImg, userOne, usersMany } from "../../assets";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [displayName, setDisplayName] = useState("");
+  const [percent, setPercent] = useState(25);
   const clickHandler = () => {
     if (currentStep + 1 === FormData.length) return;
     setCurrentStep((prev) => prev + 1);
+    setPercent((prev) => prev + 25);
   };
 
   // Callback to get data from child
@@ -18,6 +25,10 @@ export const Form = () => {
 
   return (
     <Container width="40rem" marginTop="1rem">
+      <Flex direction="row" padding="1rem">
+        <FormProgressBar percent={percent} />
+      </Flex>
+
       {currentStep + 1 === FormData.length && (
         <Flex direction="column" align="center" justify="center">
           <img src={checkMarkImg} alt="check-mark" />
