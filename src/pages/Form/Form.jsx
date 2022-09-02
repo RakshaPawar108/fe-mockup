@@ -24,8 +24,8 @@ export const Form = () => {
   const dataFromInput = (data) => setDisplayName(data);
 
   return (
-    <Container width="40rem" marginTop="1rem">
-      <Flex direction="row" padding="1rem">
+    <Container width="40rem" marginTop="0.5rem">
+      <Flex direction="row" padding="1rem" marginBottom="2rem">
         <FormProgressBar percent={percent} />
       </Flex>
 

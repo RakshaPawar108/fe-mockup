@@ -4,7 +4,7 @@ import { Flex } from "@chakra-ui/react";
 
 export const FormProgressBar = ({ percent }) => {
   return (
-    <Flex width="100%">
+    <Flex width="100%" marginBottom="2rem">
       <ProgressBar
         filledBackground="#664de4"
         height="20px"
