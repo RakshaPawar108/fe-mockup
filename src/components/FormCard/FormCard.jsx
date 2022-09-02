@@ -1,6 +1,17 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
+import { useState } from "react";
 
-export const FormCard = ({ icon, cardHeading, cardDescription }) => {
+export const FormCard = ({
+  icon,
+  cardHeading,
+  cardDescription,
+  dataFromCard,
+  isActiveCard,
+}) => {
+  const [isActive, setIsActive] = useState(isActiveCard);
+  const clickHandler = () => {
+    setIsActive(!isActive);
+  };
   return (
     <Flex
       direction="column"
@@ -9,9 +20,10 @@ export const FormCard = ({ icon, cardHeading, cardDescription }) => {
       gap="1.2rem"
       cursor="pointer"
       borderRadius="10px"
-      borderColor="#664de4"
+      borderColor={isActive ? `#664de4` : `#dedede`}
       borderWidth="2px"
       padding="1.5rem"
+      onClick={clickHandler}
     >
       <Image src={icon} height="1.5rem" width="1.5rem" />
       <Text fontSize="1.2rem" fontWeight="500">

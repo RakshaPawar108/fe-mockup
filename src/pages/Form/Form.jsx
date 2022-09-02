@@ -13,7 +13,9 @@ export const Form = () => {
     setCurrentStep((prev) => prev + 1);
   };
 
+  // Callback to get data from child
   const dataFromInput = (data) => setDisplayName(data);
+
   return (
     <Container width="40rem" marginTop="1rem">
       {currentStep + 1 === FormData.length && (
