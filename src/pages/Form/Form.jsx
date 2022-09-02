@@ -1,8 +1,9 @@
 import "./Form.css";
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
-import { FormButton, FormInput } from "../../components";
+import { FormButton, FormCard, FormInput } from "../../components";
 import { useState } from "react";
 import { FormData } from "./Form.data";
+import { userOne, usersMany } from "../../assets";
 
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -11,7 +12,7 @@ export const Form = () => {
     setCurrentStep((prev) => prev + 1);
   };
   return (
-    <Container width="100%" marginTop="1rem">
+    <Container width="40rem" marginTop="1rem">
       <Flex
         direction="column"
         align="center"
@@ -27,14 +28,35 @@ export const Form = () => {
         </Text>
       </Flex>
 
-      <Flex
-        direction="column"
-        gap="0.5rem"
-        marginTop="1.5rem"
-        className="form-container"
-      >
-        <FormInput currentStep={currentStep} />
-      </Flex>
+      {currentStep + 1 === 3 ? (
+        <Flex
+          direction="row"
+          gap="0.5rem"
+          marginTop="1.5rem"
+          className="form-container"
+        >
+          <FormCard
+            icon={userOne}
+            cardHeading="For myself"
+            cardDescription="Write better. Think more clearly. Stay organized."
+          />
+          <FormCard
+            icon={usersMany}
+            cardHeading="With my team"
+            cardDescription="Wikis, docs, tasks & projects, all in one place."
+          />
+        </Flex>
+      ) : (
+        <Flex
+          direction="column"
+          gap="0.5rem"
+          marginTop="1.5rem"
+          className="form-container"
+        >
+          <FormInput currentStep={currentStep} />
+        </Flex>
+      )}
+
       <FormButton incrementStep={clickHandler} />
     </Container>
   );
